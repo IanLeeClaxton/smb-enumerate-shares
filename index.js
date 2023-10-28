@@ -67,7 +67,7 @@ module.exports = async function(options) {
 	}
 	const host = options.host
 	const port = options.port || 445
-	const username = options.username || 'guest'
+	const username = options.username || ''
 	const password = options.password || ''
 	const domain = options.domain || 'WORKGROUP'
 	const timeout = options.timeout || 5000
