@@ -1,5 +1,5 @@
 const net = require('net')
-const ntlm = require('ntlm')
+const ntlm = require('ntlm-js')
 
 const STATUS_PENDING = 0x103
 
