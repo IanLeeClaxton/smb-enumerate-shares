@@ -1,6 +1,6 @@
 {
   "name": "smb-enumerate-shares",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "SMB share enumeration for Node",
   "author": "Joris Diesvelt <jorisdiesvelt@gmail.com>",
   "main": "index.js",
@@ -28,6 +28,6 @@
     "url": "https://github.com/SylverFox/smb-enumerate-shares.git"
   },
   "dependencies": {
-    "ntlm-js": "^0.2.1"
+    "@tryjsky/ntlm2": "^0.3.1"
   }
 }

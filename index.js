@@ -1,5 +1,5 @@
 const net = require('net')
-const ntlm = require('ntlm-js')
+const ntlm = require('@tryjsky/ntlm2')
 
 const STATUS_PENDING = 0x103
 
@@ -166,14 +166,14 @@ module.exports = async function(options) {
 	confirmStatus(result.readUInt32LE(12), 0)
 
 	// session setup step 1
-	data = ntlm.encodeType1(host, domain)
+	data = ntlm.encodeType1(domain, host)
 	result = await request(createRequest(SESSION_SETUP, data))
 	confirmStatus(result.readUInt32LE(12), 0xC0000016)
 
 	// session setup step 2
 	sessionid = result.slice(44, 52).toString('hex')
 	const nonce = ntlm.decodeType2(result.slice(76))
-	data = ntlm.encodeType3(username, host, domain, nonce, password)
+	data = ntlm.encodeType3(nonce, username, password, domain, host)
 	result = await request(createRequest(SESSION_SETUP, data))  
 	confirmStatus(result.readUInt32LE(12), 0)
 
